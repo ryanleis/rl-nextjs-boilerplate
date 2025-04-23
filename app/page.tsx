@@ -53,19 +53,19 @@ export default function Home() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            opacity: 0.9,
+            opacity: 0.8,
           }}
         />
         
         {/* Dark overlay - adjusted for high image opacity */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/98 via-blue-900/95 to-slate-900/98" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/97 via-blue-900/92 to-slate-900/97" />
 
         {/* Floating AI Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(5)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-64 h-64 rounded-full opacity-[0.12] blur-3xl"
+              className="absolute w-64 h-64 rounded-full opacity-[0.1] blur-3xl"
               style={{
                 background: `radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0) 70%)`,
                 top: `${Math.random() * 100}%`,
