@@ -45,31 +45,27 @@ export default function Home() {
     <div className="min-h-screen flex flex-col relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 -z-10">
-        {/* Main background gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" />
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            backgroundImage: 'url("/ai-background.jpg")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            opacity: 0.15,
+          }}
+        />
         
-        {/* AI Pattern Overlay */}
-        <div className="absolute inset-0 opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
-              </pattern>
-              <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
-                <circle cx="10" cy="10" r="1" fill="white" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#grid)" />
-            <rect width="100%" height="100%" fill="url(#dots)" />
-          </svg>
-        </div>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/80 to-slate-900" />
 
         {/* Floating AI Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(5)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-64 h-64 rounded-full opacity-10 blur-3xl"
+              className="absolute w-64 h-64 rounded-full opacity-[0.08] blur-3xl"
               style={{
                 background: `radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0) 70%)`,
                 top: `${Math.random() * 100}%`,
