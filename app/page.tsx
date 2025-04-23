@@ -53,12 +53,12 @@ export default function Home() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            opacity: 0.82,
+            opacity: 0.7,
           }}
         />
         
         {/* Dark overlay - adjusted for optimal contrast */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/96 via-blue-900/93 to-slate-900/96" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/90 to-slate-900/95" />
 
         {/* Floating AI Elements */}
         <div className="absolute inset-0 overflow-hidden">
