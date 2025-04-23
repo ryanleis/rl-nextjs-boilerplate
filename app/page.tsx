@@ -42,20 +42,58 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 text-white font-sans">
+    <div className="min-h-screen flex flex-col relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 -z-10">
+        {/* Main background gradient */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900" />
+        
+        {/* AI Pattern Overlay */}
+        <div className="absolute inset-0 opacity-20">
+          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" strokeWidth="0.5" />
+              </pattern>
+              <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                <circle cx="10" cy="10" r="1" fill="white" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#grid)" />
+            <rect width="100%" height="100%" fill="url(#dots)" />
+          </svg>
+        </div>
+
+        {/* Floating AI Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className="absolute w-64 h-64 rounded-full opacity-10 blur-3xl"
+              style={{
+                background: `radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0) 70%)`,
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                transform: `scale(${0.5 + Math.random()})`,
+              }}
+            />
+          ))}
+        </div>
+      </div>
+
       {/* Header Navigation */}
       <header className="fixed w-full bg-black/30 backdrop-blur-lg z-50">
         <div className="container mx-auto flex justify-between items-center px-4 py-4">
           <div className="flex items-center gap-2">
             <Image
-              src="/vercel.svg"
-              alt="Company Logo"
-              width={32}
-              height={32}
-              className="invert"
+              src="/logo.svg"
+              alt="AI Platform Logo"
+              width={40}
+              height={40}
+              className="w-10 h-10"
             />
-            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-              NEXAI Solutions
+            <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              AI Platform
             </span>
           </div>
           
@@ -93,116 +131,56 @@ export default function Home() {
         )}
       </header>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-900/30 to-purple-900/30 opacity-30"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-        </div>
-        
-        <div className="container mx-auto px-4 z-10 flex flex-col items-center text-center">
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
-            Powering the Future with AI
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl text-gray-200">
-            Transforming business operations with cutting-edge artificial intelligence solutions designed for tomorrow's challenges.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <a
-              className="rounded-full bg-blue-600 hover:bg-blue-700 px-8 py-4 font-medium transition-colors"
-              href="#demo"
-            >
-              Request Demo
-            </a>
-            <a
-              className="rounded-full border border-white/30 hover:bg-white/10 px-8 py-4 font-medium transition-colors"
-              href="#solutions"
-            >
-              Explore Solutions
-            </a>
+      {/* Main Content */}
+      <main className="flex-1 pt-20">
+        {/* Hero Section */}
+        <section className="relative py-20 px-4">
+          <div className="container mx-auto text-center">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              Next-Gen AI Solutions
+            </h1>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              Transform your business with cutting-edge artificial intelligence technology
+            </p>
           </div>
-        </div>
-        
-        <div className="absolute bottom-10 left-0 right-0 flex justify-center">
-          <div className="animate-bounce">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-8 h-8">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Features Section */}
-      <section id="products" className="py-20 bg-black/30 backdrop-blur-sm">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">AI-Powered Solutions</h2>
-            <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div key={index} className="bg-gradient-to-br from-slate-800 to-blue-900/40 p-8 rounded-xl border border-white/10 hover:border-blue-500/50 transition group hover:-translate-y-1">
-                <div className="text-4xl mb-4">{feature.icon}</div>
-                <h3 className="text-xl font-bold mb-2 group-hover:text-blue-400 transition">{feature.title}</h3>
-                <p className="text-gray-300">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Showcase Section */}
-      <section id="solutions" className="py-20 relative">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Next-Generation AI Technology</h2>
-              <p className="text-gray-300 mb-8">
-                Our proprietary neural networks analyze complex data patterns in real-time, providing unprecedented insights and automation capabilities for your business operations.
-              </p>
-              <ul className="space-y-4">
-                {statPoints.map((point, index) => (
-                  <li key={index} className="flex items-center">
-                    <span className="mr-2 text-blue-400">✓</span>
-                    {point}
-                  </li>
-                ))}
-              </ul>
-              <a href="#case-studies" className="inline-block mt-8 text-blue-400 hover:underline">
-                View case studies →
-              </a>
-            </div>
-            <div className="md:w-1/2 relative">
-              <div className="rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 border border-white/10">
-                <div className="w-full h-[400px] bg-gradient-to-br from-blue-800 to-purple-900 flex items-center justify-center">
-                  <p className="text-lg text-white/70">AI Visualization</p>
+        {/* Features Section */}
+        <section className="py-20 px-4 relative">
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/20 to-transparent" />
+          <div className="container mx-auto">
+            <h2 className="text-3xl font-bold text-center mb-12">Our AI Capabilities</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all"
+                >
+                  <div className="text-4xl mb-4">{feature.icon}</div>
+                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
+                  <p className="text-gray-300">{feature.description}</p>
                 </div>
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-blue-600 px-6 py-4 rounded-lg">
-                <p className="font-bold">200%</p>
-                <p className="text-sm">ROI Average</p>
-              </div>
+              ))}
             </div>
           </div>
-        </div>
-      </section>
-      
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-900 to-purple-900">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Join the AI revolution and stay ahead of your competition with our cutting-edge solutions.
-          </p>
-          <a
-            className="rounded-full bg-white text-blue-900 hover:bg-blue-100 px-8 py-4 font-bold text-lg transition-colors inline-block"
-            href="#contact"
-          >
-            Schedule a Consultation
-          </a>
-        </div>
-      </section>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 px-4">
+          <div className="container mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {statPoints.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-blue-500/20 text-center"
+                >
+                  <p className="text-lg">{stat}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
 
       {/* Footer */}
       <footer id="contact" className="bg-slate-900 py-12">
