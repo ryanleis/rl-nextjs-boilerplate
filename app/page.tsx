@@ -53,21 +53,21 @@ export default function Home() {
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
-            opacity: 0.8,
+            opacity: 0.82,
           }}
         />
         
-        {/* Dark overlay - adjusted for high image opacity */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/97 via-blue-900/92 to-slate-900/97" />
+        {/* Dark overlay - adjusted for optimal contrast */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-900/96 via-blue-900/93 to-slate-900/96" />
 
         {/* Floating AI Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {[...Array(5)].map((_, i) => (
             <div
               key={i}
-              className="absolute w-64 h-64 rounded-full opacity-[0.1] blur-3xl"
+              className="absolute w-64 h-64 rounded-full opacity-[0.15] blur-3xl"
               style={{
-                background: `radial-gradient(circle, rgba(59, 130, 246, 0.5) 0%, rgba(59, 130, 246, 0) 70%)`,
+                background: `radial-gradient(circle, rgba(59, 130, 246, 0.7) 0%, rgba(59, 130, 246, 0) 70%)`,
                 top: `${Math.random() * 100}%`,
                 left: `${Math.random() * 100}%`,
                 transform: `scale(${0.5 + Math.random()})`,
@@ -132,10 +132,10 @@ export default function Home() {
         {/* Hero Section */}
         <section className="relative py-20 px-4">
           <div className="container mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent drop-shadow-lg">
               Next-Gen AI Solutions
             </h1>
-            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-200 max-w-2xl mx-auto drop-shadow-md">
               Transform your business with cutting-edge artificial intelligence technology
             </p>
           </div>
@@ -143,18 +143,18 @@ export default function Home() {
 
         {/* Features Section */}
         <section className="py-20 px-4 relative">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-900/30 to-transparent" />
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Our AI Capabilities</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-white drop-shadow-md">Our AI Capabilities</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-blue-500/20 hover:border-blue-500/40 transition-all"
+                  className="bg-black/40 backdrop-blur-lg p-6 rounded-xl border border-blue-500/30 hover:border-blue-500/50 transition-all shadow-lg hover:shadow-blue-500/20"
                 >
-                  <div className="text-4xl mb-4">{feature.icon}</div>
-                  <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                  <p className="text-gray-300">{feature.description}</p>
+                  <div className="text-4xl mb-4 drop-shadow-md">{feature.icon}</div>
+                  <h3 className="text-xl font-bold mb-2 text-white drop-shadow-sm">{feature.title}</h3>
+                  <p className="text-gray-200">{feature.description}</p>
                 </div>
               ))}
             </div>
@@ -168,9 +168,9 @@ export default function Home() {
               {statPoints.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-black/30 backdrop-blur-lg p-6 rounded-xl border border-blue-500/20 text-center"
+                  className="bg-black/40 backdrop-blur-lg p-6 rounded-xl border border-blue-500/30 text-center shadow-lg"
                 >
-                  <p className="text-lg">{stat}</p>
+                  <p className="text-lg text-white drop-shadow-sm">{stat}</p>
                 </div>
               ))}
             </div>
