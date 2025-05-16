@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 // Define types for better TypeScript support
 type Feature = {
@@ -80,7 +81,7 @@ export default function Home() {
       {/* Header Navigation */}
       <header className="fixed w-full bg-black/30 backdrop-blur-lg z-50">
         <div className="container mx-auto flex justify-between items-center px-4 py-4">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2">
             <Image
               src="/logo.svg"
               alt="AI Platform Logo"
@@ -91,15 +92,15 @@ export default function Home() {
             <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               AI Platform
             </span>
-          </div>
+          </Link>
           
           {/* Desktop Navigation */}
           <nav className="hidden md:flex gap-8">
-            <a href="#products" className="hover:text-blue-400 transition">Products</a>
-            <a href="#solutions" className="hover:text-blue-400 transition">Solutions</a>
-            <a href="#about" className="hover:text-blue-400 transition">About Us</a>
-            <a href="#resources" className="hover:text-blue-400 transition">Resources</a>
-            <a href="#contact" className="hover:text-blue-400 transition">Contact</a>
+            <Link href="/#products" className="hover:text-blue-400 transition">Products</Link>
+            <Link href="/#solutions" className="hover:text-blue-400 transition">Solutions</Link>
+            <Link href="/about" className="hover:text-blue-400 transition">About Us</Link>
+            <Link href="/#resources" className="hover:text-blue-400 transition">Resources</Link>
+            <Link href="/#contact" className="hover:text-blue-400 transition">Contact</Link>
           </nav>
           
           {/* Mobile Menu Button */}
@@ -117,11 +118,11 @@ export default function Home() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-black/95 backdrop-blur-lg">
             <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              <a href="#products" className="hover:text-blue-400 transition py-2 border-b border-white/10">Products</a>
-              <a href="#solutions" className="hover:text-blue-400 transition py-2 border-b border-white/10">Solutions</a>
-              <a href="#about" className="hover:text-blue-400 transition py-2 border-b border-white/10">About Us</a>
-              <a href="#resources" className="hover:text-blue-400 transition py-2 border-b border-white/10">Resources</a>
-              <a href="#contact" className="hover:text-blue-400 transition py-2">Contact</a>
+              <Link href="/#products" className="hover:text-blue-400 transition py-2 border-b border-white/10">Products</Link>
+              <Link href="/#solutions" className="hover:text-blue-400 transition py-2 border-b border-white/10">Solutions</Link>
+              <Link href="/about" className="hover:text-blue-400 transition py-2 border-b border-white/10">About Us</Link>
+              <Link href="/#resources" className="hover:text-blue-400 transition py-2 border-b border-white/10">Resources</Link>
+              <Link href="/#contact" className="hover:text-blue-400 transition py-2">Contact</Link>
             </nav>
           </div>
         )}
